@@ -1,0 +1,82 @@
+name: Update Azure Documentation
+
+on:
+  schedule:
+    # Run every Sunday at midnight UTC
+    - cron: '0 0 * * 0'
+  workflow_dispatch:  # Allow manual trigger
+  push:
+    branches:
+      - main
+    paths:
+      - 'examples/scripts/**'
+      - '.github/workflows/update-docs.yml'
+
+jobs:
+  update-docs:
+    runs-on: ubuntu-latest
+    
+    permissions:
+      contents: write
+      pull-requests: write
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Azure Login
+        uses: azure/login@v2
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+      
+      - name: Verify Azure CLI
+        run: |
+          az --version
+          az account show
+      
+      - name: Set up environment
+        run: |
+          mkdir -p docs/{resources,compute,network,storage,security}
+          chmod +x examples/scripts/generate-docs.sh
+      
+      - name: Generate Documentation
+        run: |
+          cd examples/scripts
+          ./generate-docs.sh
+        continue-on-error: true
+      
+      - name: Check for changes
+        id: check_changes
+        run: |
+          git config user.name "GitHub Actions Bot"
+          git config user.email "actions@github.com"
+          
+          if git diff --quiet docs/; then
+            echo "changes=false" >> $GITHUB_OUTPUT
+            echo "No changes detected in documentation"
+          else
+            echo "changes=true" >> $GITHUB_OUTPUT
+            echo "Changes detected in documentation"
+          fi
+      
+      - name: Commit and Push changes
+        if: steps.check_changes.outputs.changes == 'true'
+        run: |
+          git add docs/
+          git commit -m "docs: Update Azure documentation [automated]"
+          git push
+      
+      - name: Create summary
+        run: |
+          echo "## Azure Documentation Update" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Status:** ${{ steps.check_changes.outputs.changes == 'true' && 'Updated ✅' || 'No changes 📝' }}" >> $GITHUB_STEP_SUMMARY
+          echo "**Timestamp:** $(date -u +'%Y-%m-%d %H:%M:%S UTC')" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          
+          if [ -d "docs" ]; then
+            echo "### Generated Files" >> $GITHUB_STEP_SUMMARY
+            find docs -type f -name "*.md" | sort | while read file; do
+              echo "- \`$file\`" >> $GITHUB_STEP_SUMMARY
+            done
+          fi

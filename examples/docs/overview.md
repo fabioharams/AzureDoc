@@ -1,0 +1,179 @@
+# Azure Subscription Documentation
+
+**Subscription:** Production Subscription
+**Subscription ID:** 12345678-1234-1234-1234-123456789abc
+**Generated:** 2024-01-15 10:30:00
+
+## Quick Stats
+
+- **Resource Groups:** 15
+- **Virtual Machines:** 28
+- **Storage Accounts:** 12
+- **Virtual Networks:** 8
+
+## Overview
+
+This document provides an overview of all resources in the Azure subscription. For detailed information about specific resources, refer to the individual documentation files in the respective folders.
+
+## Resource Groups
+
+| Name | Location | Resources | Purpose |
+|------|----------|-----------|---------|
+| rg-production-web | East US | 12 | Production web applications |
+| rg-production-data | East US 2 | 8 | Production databases and storage |
+| rg-development | West US | 15 | Development environment |
+| rg-staging | Central US | 10 | Staging environment |
+| rg-networking | East US | 6 | Network infrastructure |
+
+## Resource Summary by Type
+
+### Compute Resources
+- Virtual Machines: 28
+- App Services: 15
+- Function Apps: 8
+- Container Instances: 5
+
+### Storage Resources
+- Storage Accounts: 12
+- Managed Disks: 45
+- File Shares: 20
+
+### Network Resources
+- Virtual Networks: 8
+- Load Balancers: 4
+- Application Gateways: 2
+- VPN Gateways: 1
+
+### Data & Analytics
+- SQL Databases: 10
+- Cosmos DB Accounts: 3
+- SQL Managed Instances: 2
+
+### Security & Identity
+- Key Vaults: 5
+- Private Endpoints: 18
+- Network Security Groups: 12
+
+## Cost Analysis
+
+- **Current Month (MTD):** $45,230
+- **Previous Month:** $42,850
+- **Projected Month:** $48,500
+- **Average Daily Cost:** $1,508
+
+### Top 5 Resources by Cost
+1. SQL Managed Instance (prod-sql-mi-01) - $8,200/month
+2. VM Scale Set (prod-vmss-web) - $6,500/month
+3. Application Gateway (prod-appgw-01) - $3,800/month
+4. Cosmos DB (prod-cosmos-db) - $3,200/month
+5. Premium Storage (prod-storage-premium) - $2,100/month
+
+## Regions Distribution
+
+| Region | Resource Groups | Resources | Monthly Cost |
+|--------|-----------------|-----------|--------------|
+| East US | 6 | 78 | $22,500 |
+| East US 2 | 3 | 35 | $12,300 |
+| West US | 4 | 42 | $8,100 |
+| Central US | 2 | 18 | $2,330 |
+
+## Security & Compliance
+
+### Security Center
+- **Secure Score:** 82/100
+- **High Severity Recommendations:** 3
+- **Medium Severity Recommendations:** 12
+- **Low Severity Recommendations:** 8
+
+### Compliance
+- **Azure Policy Assignments:** 15 active
+- **Compliant Resources:** 89%
+- **Non-compliant Resources:** 11%
+
+### Key Security Recommendations
+1. Enable Azure Disk Encryption on remaining VMs
+2. Configure diagnostic logging for all Key Vaults
+3. Implement Just-In-Time VM Access for management VMs
+4. Review and update NSG rules for unused ports
+
+## Tags Strategy
+
+Common tags applied across resources:
+- **Environment:** Production, Staging, Development
+- **Owner:** Team name or department
+- **CostCenter:** Finance cost center code
+- **Application:** Application name
+- **Criticality:** High, Medium, Low
+
+## Backup & Disaster Recovery
+
+- **Recovery Services Vaults:** 3
+- **Backed Up VMs:** 25/28 (89%)
+- **SQL Database Backups:** Automated (7-35 days retention)
+- **Geo-Redundant Storage:** Enabled for critical data
+
+### Backup Compliance
+- ✅ All production VMs backed up
+- ✅ All production databases backed up
+- ⚠️ 3 development VMs not backed up (by design)
+
+## Monitoring & Alerts
+
+- **Log Analytics Workspaces:** 2
+- **Application Insights Instances:** 12
+- **Active Alert Rules:** 45
+- **Action Groups:** 8
+
+### Critical Alerts Configured
+- VM CPU > 90% for 15 minutes
+- Database DTU > 80% for 10 minutes
+- Storage account > 90% capacity
+- Application availability < 99%
+- Key Vault access failures
+
+## Recent Changes
+
+| Date | Resource | Change Type | Changed By |
+|------|----------|-------------|------------|
+| 2024-01-14 | prod-vm-web-05 | Created | DevOps Pipeline |
+| 2024-01-13 | prod-sql-db-01 | Scale Up (P2→P4) | John Doe |
+| 2024-01-12 | rg-production-web | Tag Updated | Jane Smith |
+| 2024-01-11 | prod-nsg-web | Rule Added | Security Team |
+
+## Documentation Structure
+
+```
+docs/
+├── overview.md (this file)
+├── resources/
+│   └── resource-groups.md
+├── compute/
+│   ├── virtual-machines.md
+│   └── app-services.md
+├── network/
+│   ├── virtual-networks.md
+│   └── network-security-groups.md
+├── storage/
+│   └── storage-accounts.md
+└── security/
+    └── key-vaults.md
+```
+
+## Additional Resources
+
+- [Azure Portal](https://portal.azure.com)
+- [Cost Management + Billing](https://portal.azure.com/#blade/Microsoft_Azure_CostManagement/Menu/overview)
+- [Security Center](https://portal.azure.com/#blade/Microsoft_Azure_Security/SecurityMenuBlade/0)
+- [Azure Monitor](https://portal.azure.com/#blade/Microsoft_Azure_Monitoring/AzureMonitoringBrowseBlade/overview)
+
+## Contacts
+
+- **Cloud Team Lead:** cloud-team@company.com
+- **Security Team:** security@company.com
+- **Azure Support:** Azure Support Portal
+
+---
+
+**Last Updated:** 2024-01-15 10:30:00
+**Documentation Generated By:** Automated Azure Documentation Script
+**Next Review:** 2024-01-22
