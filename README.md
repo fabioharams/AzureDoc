@@ -9,7 +9,7 @@ After extensive testing, I found that **Claude Opus 4.6** delivers excellent res
 
 ## Step 0 | Requirements ##
 
-Install ViSual Studio Code Insider and GitHub Copilot Chat. Maybe you will be prompted to install other solutions from marketplace to support this task, like **Mermaid**, **Markdown**, **Draw.io** etc. 
+Install Visual Studio Code Insider and GitHub Copilot Chat. Maybe you will be prompted to install other solutions from marketplace to support this task, like **Mermaid**, **Markdown**, **Draw.io** etc. 
 
 - Download VS Code Insider: 
 <https://code.visualstudio.com/insiders>
