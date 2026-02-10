@@ -279,3 +279,28 @@ Color-coded status indicators
 Cross-references between resources
 ```
 
+## Report | Sample Images ## 
+
+These are the sample images from the report to understand what kind of information is provided.
+
+***
+![demo2](/img/demo2.png)
+
+***
+![demo3](/img/demo3png)
+
+***
+![demo4](/img/demo4.png)
+
+***
+![demo5](/img/demo5.png)
+
+***
+![demo6](/img/demo6.png)
+
+***
+![demo7](/img/demo7.png)
+
+***
+![demo8](/img/demo8.png)
+
