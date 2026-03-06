@@ -61,7 +61,8 @@ Once confirmed, echo back the values for user verification:
 
 ✅ Tenant ID: <tenant-id>
 ✅ Subscription ID:<subscription-id>
-"Confirmed. Starting documentation for the above Azure context...
+"Confirmed. Starting documentation for the above Azure context..."
+
 
 
 Core Documentation Structure
